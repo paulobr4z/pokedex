@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <script src="https://kit.fontawesome.com/a438ea2049.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <header>
+        <a href="https://paulobraz.com/exemplos/pokedex/index.html">
+            <div class="title" >Pokedéx</div>
+        </a>        
+        
+        <select class="generation" name="" id="" onchange="getAllPokemons(this.value)">
+            <option value="1">GEN 1</option>
+            <option value="2">GEN 2</option>
+            <option value="3">GEN 3</option>
+            <option value="4">GEN 4</option>
+            <option value="5">GEN 5</option>
+            <option value="6">GEN 6</option>
+            <option value="7">GEN 7</option>
+            <option value="all">ALL GEN</option>
+        </select>
+        
+        <div class="container-search">
+            <input class="search-input" type="text" placeholder="Search" autofocus >
+            <i class="fas fa-search btnSearch"></i>
+        </div>
+
+    </header>
+
+    <div class="cont-main"></div>
+
+    <div class="modal" onclick="teste()">
+        <div class="modal-content">
+            <div class="name">Bulbasaur</div>
+            <div class="number">N° 001</div>            
+            <div class="center">
+                <div class="m-avatar"></div>
+                <div class="types"></div>
+                <div class="grid-container">
+                    <div class="grid-1">Height</div>
+                    <div class="grid-2">Weight</div>
+                    <div class="grid-3">Ability</div>
+                    <div class="grid-4">0,7m</div>                    
+                    <div class="grid-5">6,9kg</div>                    
+                    <div class="grid-6">Overgrow</div>
+                </div>
+                <div class="grid-container2">
+                    <div class="status-title"> Base Status</div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>        
+</body>
+</html>
