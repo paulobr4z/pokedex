@@ -1,18 +1,18 @@
 # pokedex
 
-<p> O projeto consistiu em criar uma página web com as caracteristicas de uma Pokedex. </p>
+O projeto consistiu em criar uma página web com as caracteristicas de uma Pokedex.
 
 As informações dos pokemons são consumidas da API [pokeapi](https://pokeapi.co/) e as imagens da [pokeres.bastionbot](https://pokeres.bastionbot.org/images/pokemon/1.png).
   
-<p>Na tela inicial são renderizados os pokemons da primeira geração (do numero 1 ao 152).</p>
+Na tela inicial são renderizados os pokemons da primeira geração (do numero 1 ao 152).
 
 ![Tela inicial](https://github.com/paulobr4z/pokedex/blob/master/img/ps001.png)
 
-<p>O usuário poderá visualizar as demais geraçoes utilizando o menu select, escolhendo a geração desejada ou ainda renderizar todos os pokemons selecionado a opção ALLGEN.</p>
+O usuário poderá visualizar as demais geraçoes utilizando o menu select, escolhendo a geração desejada ou ainda renderizar todos os pokemons selecionado a opção ALLGEN.
 
 ![Selecionado Geração](https://github.com/paulobr4z/pokedex/blob/master/img/ps002.png)
 
-<p>Ao clicar em um pokemon, a aplicação mostra um modal com mais informações sobre mesmo.</p>
+Ao clicar em um pokemon, a aplicação mostra um modal com mais informações sobre mesmo.
 
 ![Mais detalhes](https://github.com/paulobr4z/pokedex/blob/master/img/ps003.png)
 
