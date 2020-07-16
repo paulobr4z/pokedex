@@ -1,67 +1,46 @@
-        const num = [];
-        const statusID = ['hp', 'attack', 'defense', 'special-attack', 'special-defense', 'speed'];
         const statusName = ['hp', 'atk', 'def', 'sp atk', 'sp def', 'spd'];
 
-        for (let i = 1; i < 808; i++) {
-            if (i < 10) {
-                num.push("00" + i);                
-            } else if (i < 100) {
-                num.push("0" + i);                
-            } else {
-                num.push(i.toString());
-            }
+        function loading(){
+            const contMain = document.querySelector(".cont-main");
+            contMain.innerHTML = `<div class="loading">
+                                    <div class="pokeball">
+                                        <div class="pokeball__button"></div>
+                                    </div>
+                                    <h3>Loading...</h3>
+                                </div>`
         }
 
-        function getAllPokemons(gen){
-            const promises = [];
-            let numGenInit = 0;
-            let numGenFinal = 0;
-            document.querySelector('.cont-main').innerHTML = "";
+        // recebe o ID inicial e final dos pokemons de cada geraÃ§Ã£o.
+        function selectGeneration(gen) {
+            const numGenInit = gen.split(',')[0];
+            const numGenFinal = gen.split(',')[1];
+            getPokemonsUrl(numGenInit, numGenFinal)
+            loading();
+        }
 
-            if (gen === "1") {
-                numGenInit = 1;
-                numGenFinal = 152;
-            } else if (gen === "2") {
-                numGenInit = 152;
-                numGenFinal = 252;                
-            } else if (gen === "3") {
-                numGenInit = 252;
-                numGenFinal = 387;                
-            } else if (gen ==="4"){
-                numGenInit = 387;
-                numGenFinal = 494;
-            } else if (gen ==="5") {
-                numGenInit = 494;
-                numGenFinal = 650;                
-            } else if (gen ==="6") {
-                numGenInit = 650;
-                numGenFinal = 722;                
-            } else  if (gen === "7"){
-                numGenInit = 722;
-                numGenFinal = 808;                
-            } else {
-                numGenInit = 1;
-                numGenFinal = 808;
-            }
+        function getPokemonsUrl(numGenInit, numGenFinal){
+            const promises = [];
 
             for (let i = numGenInit; i < numGenFinal; i++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${i}/`;
                 promises.push(fetch(url).then((res) => res.json()));
             }
-            Promise.all(promises).then((results) => {
+            getAllPokemons(promises)
+        }
+        getPokemonsUrl(1, 152);
 
+        function getAllPokemons(promises) {
+            Promise.all(promises).then((results) => {
                 const pokemon = results.map((result) => ({
                     name: result.name,
-                    image: `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${num[result.id-1]}.png`,
-                    type: result.types.map((type) => type.type.name).reverse().join(' / '),
+                    image: `https://pokeres.bastionbot.org/images/pokemon/${result.id}.png`,
+                    type: result.types.map((type) => type.type.name).join(' / '),
                     id: result.id,
-                    type1: result.types.map((type) => type.type.name).reverse()[0],
+                    type1: result.types.map((type) => type.type.name)[0],
                 }));
                 slotCreator(pokemon);
-            });            
-        }
-        getAllPokemons("1");
-
+            });
+        }     
 
         function slotCreator(allPokemons){
             let pokemons = allPokemons;
@@ -69,36 +48,18 @@
             let searchInput = document.querySelector('.search-input');
             let suggestionsPanel = document.querySelector('.cont-main');
 
-            pokemons.forEach((allPoke)=>{
+            const pokemonsCont = pokemons.map((allPoke) =>
+                `<div class="slot ${allPoke.type1}" id="${allPoke.id}" onclick="createModal(this.id)">
+                        <img src="https://pokeres.bastionbot.org/images/pokemon/${allPoke.id}.png" alt="">
+                    <div class="info">
+                        <div># ${allPoke.id}</div>
+                        <div>${allPoke.name}</div>
+                        <div>${allPoke.type}</div>
+                    </div>
+                </div>`
+            ).join('');
 
-                let slot = document.createElement("div");
-                let typeColor = allPoke.type1
-                slot.classList.add("slot"); 
-                slot.classList.add(typeColor);                   
-                slot.id = allPoke.id;
-                slot.setAttribute("onclick","teste(this.id)");
-                suggestionsPanel.appendChild(slot);
-
-                let img = document.createElement("img");
-                img.src = allPoke.image;
-                slot.appendChild(img);
-
-                let info = document.createElement("div");
-                info.classList.add("info");
-                slot.appendChild(info);
-
-                let id = document.createElement("div");
-                id.innerHTML = "# " + allPoke.id;
-                info.appendChild(id);
-
-                let name = document.createElement("div");
-                name.innerHTML = allPoke.name;
-                info.appendChild(name);
-                
-                let type = document.createElement("div");
-                type.innerHTML = allPoke.type;
-                info.appendChild(type);
-            })
+            suggestionsPanel.innerHTML = pokemonsCont;
 
             searchInput.addEventListener("keyup", ()=>{
                 const input = searchInput.value.toLowerCase();
@@ -106,123 +67,66 @@
                 const suggestions = pokemons.filter(function(pokemon) {
                     return pokemon.name.startsWith(input);
                 });
-                suggestions.forEach((pokeSearch)=>{
-                    let slot = document.createElement("div");
-                    let typeColor = pokeSearch.type1
-                    slot.classList.add("slot");
-                    slot.classList.add(typeColor);                    
-                    slot.id = pokeSearch.id;
-                    slot.setAttribute("onclick","teste(this.id)");
-                    suggestionsPanel.appendChild(slot);
 
-                    let img = document.createElement("img");
-                    img.src = pokeSearch.image;
-                    slot.appendChild(img);
+                const pokemons2 = suggestions.map((allPoke) => 
+                    `<div class="slot ${allPoke.type1}" id="${allPoke.id}" onclick="createModal(this.id)">
+                            <img src="https://pokeres.bastionbot.org/images/pokemon/${allPoke.id}.png" alt="">
+                        <div class="info">
+                            <div># ${allPoke.id}</div>
+                            <div>${allPoke.name}</div>
+                            <div>${allPoke.type}</div>
+                        </div>
+                    </div>`
+                ).join('');
 
-                    let info = document.createElement("div");
-                    info.classList.add("info");
-                    slot.appendChild(info);
-
-                    let id = document.createElement("div");
-                    id.innerHTML = "#" + pokeSearch.id;
-                    info.appendChild(id);
-
-                    let name = document.createElement("div");
-                    name.innerHTML = pokeSearch.name;
-                    info.appendChild(name);
-                    
-                    let type = document.createElement("div");
-                    type.innerHTML = pokeSearch.type;
-                    info.appendChild(type);
-
-                })
+                suggestionsPanel.innerHTML = pokemons2;
             })
         }
 
-        function teste(value){
+        function createModal(value){
             const modal = document.querySelector(".modal");
             const trigger = document.querySelector(".slot");
+            const modalContent = document.querySelector('.modal-content');
             modal.classList.toggle("show-modal");
+            const pokemonPromise = [];
 
-            if (value !== undefined) {
+            if (value !== undefined) {        
                 const url = `https://pokeapi.co/api/v2/pokemon/${value}/`;
-                fetch(url).then(res =>{
-                    return res.json();
-                })
-                .then(data => {                    
-                    let cont = document.querySelector('.m-container');
-                    let avatar = document.querySelector('.m-avatar')
-                    let types = document.querySelector('.types');
-                    let gridContainer2 = document.querySelector('.grid-container2');
-                    types.innerHTML = "";                    
-                    avatar.innerHTML = "";
-                    gridContainer2.innerHTML = "";
+                pokemonPromise.push(fetch(url).then(res => res.json()));
+                Promise.all(pokemonPromise).then((data) => {
+                    const infoContent = data.map(info =>
+                        `
+                        <div class="modal-content ${info.types.map((type) => type.type.name)[0]}">
+                        <div class="name">${info.name}</div>
+                        <div class="number">#${info.id}</div>            
+                        <div class="center">
+                            <div class="m-avatar"><img src="https://pokeres.bastionbot.org/images/pokemon/${info.id}.png"></div>
+                            <div class="types">
+                                ${info.types.map(type => `<div class="type1 ${type.type.name}">${type.type.name}</div>`).join('')}
+                            </div>
+                            <div class="grid-container">
+                                <div class="grid-1">Height</div>
+                                <div class="grid-2">Weight</div>
+                                <div class="grid-3">Ability</div>
+                                <div class="grid-4">${(info.height/10)} m</div>                    
+                                <div class="grid-5">${(info.weight/10)} kg</div>                    
+                                <div class="grid-6"> ${info.abilities.map( ability => ability.ability.name)[0]}</div>
+                            </div>
+                            <div class="grid-container2">
+                            <div class="status-title">Base Status</div>
+                                ${info.stats.map( (status, i) => 
+                                    `<div class="status-name" id="speed">${statusName[i]}</div>
+                                        <div class="status-num">${info.stats.map(( stat ) => stat.base_stat)[i]}</div>
+                                        <div class="bar">
+                                        <span id="bar-speed" class="${info.types.map((type) => type.type.name)[0]}" style="width: ${((info.stats.map(( stat ) => stat.base_stat)[i])/200)*100}%;"></span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        `
+                    ).join('');
 
-                    document.querySelector('.name').innerHTML = data.name;
-                    document.querySelector('.number').innerHTML = '#' + data.id;
-
-                    let img = document.createElement("img");
-                    img.src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${num[data.id-1]}.png`;
-                    avatar.appendChild(img);
-
-                    data.types.reverse().forEach(type => {
-                        let type1 = document.createElement('div');
-                        let typeName = document.createTextNode(type.type.name);
-                        type1.appendChild(typeName)
-                        type1.classList.add("type1");
-                        type1.classList.add(type.type.name);
-                        types.appendChild(type1);
-                    });
-                    document.querySelector('.modal-content').className = "modal-content " + document.querySelector('.type1').innerHTML;
-                    document.querySelector('.grid-4').innerHTML = (data.height/10) + " m";
-                    document.querySelector('.grid-5').innerHTML = (data.weight/10) + " kg";
-
-                    data.abilities.forEach(ability => {
-                        document.querySelector('.grid-6').innerHTML = ability.ability.name;
-                    });
-
-                    let statusTitle = document.createElement('div');
-                    let statTitle = document.createTextNode("Base Status");
-                    statusTitle.appendChild(statTitle)
-                    statusTitle.classList.add("status-title");
-                    gridContainer2.appendChild(statusTitle);
-
-                    data.stats.reverse().forEach(stat => {                        
-                        let statusName = document.createElement('div');
-                        let statName = document.createTextNode(stat.stat.name);
-                        statusName.appendChild(statName)
-                        statusName.classList.add("status-name");
-                        statusName. id = stat.stat.name;
-                        gridContainer2.appendChild(statusName);
-
-                        let statusNum = document.createElement('div');
-                        let baseStat = document.createTextNode(stat.base_stat);
-                        statusNum.appendChild(baseStat)
-                        statusNum.classList.add("status-num");
-                        gridContainer2.appendChild(statusNum);
-
-                        let bar = document.createElement('div');
-                        let span = document.createElement('span')
-                        let barID = 'bar-' + stat.stat.name;
-                        let init = document.createTextNode('0');
-                        let final = document.createTextNode('200');
-                        bar.appendChild(span);
-                        span.id = barID;
-                        bar.classList.add("bar");
-                        
-                        gridContainer2.appendChild(bar);
-
-                        document.getElementById(barID).className = document.querySelector('.type1').innerHTML;
-                        
-
-                        document.getElementById(barID).style.width = ((stat.base_stat/200)*100) + "%";
-                        
-                    });
-
-                    for (let i = 0; i < 6; i++) {
-                        let id = "#" + statusID[i];
-                        document.querySelector(id).innerHTML = statusName[i];
-                    }
+                    modalContent.innerHTML = infoContent;
                 })
             }            
         }
