@@ -1,6 +1,6 @@
 # pokedex
 
-<p> O projeto consistem em criar uma página web com as caracteristicas de uma Pokedex. </p>
+<p> O projeto consistiu em criar uma página web com as caracteristicas de uma Pokedex. </p>
 
 <p>As informações dos pokemons são consumidas da API [pokeapi](https://pokeapi.co/) e as imagens [pokeres.bastionbot](https://pokeres.bastionbot.org/images/pokemon/1.png).</p>
   
