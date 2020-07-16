@@ -12,10 +12,13 @@ O usuário poderá visualizar as demais geraçoes utilizando o menu select, esco
 
 ![Selecionado Geração](https://github.com/paulobr4z/pokedex/blob/master/img/ps002.png)
 
+O usuário poderá pesquisar determinado pokemons pelo nome.
+
+![Pesquisar](https://github.com/paulobr4z/pokedex/blob/master/img/ps004.png)
+
 Ao clicar em um pokemon, a aplicação mostra um modal com mais informações sobre mesmo.
 
 ![Mais detalhes](https://github.com/paulobr4z/pokedex/blob/master/img/ps003.png)
-
 
 O resultado final pode ser visualizado aqui. [Live preview](https://paulobraz.com/exemplos/pokedex/index.html)
 
