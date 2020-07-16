@@ -1,283 +1,349 @@
 
-        @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
-        a{
-            text-decoration: none;
-            color: black;
-        }
-        body{
-            background-color: #e2e1e0;
-        }
-        header{
-            width: 100%; height: 100%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            padding: 50px 130px;
-            padding-bottom: 10px;
-        }
-        .title{
-            font-size: 30px;
-            font-weight: bold;
-        }
-        .generation{
-            padding: 5px;
-            border-radius: 15px;
-            outline: none;
-            background-color: white;
-            border: none;
-            width: 100px;
-        }
-        .container-search {
-            position: relative;
-            width: 300px;
-        }
-        .container-search i {
-            position: absolute;
-            top: -2px; left: 3px;
-            padding: 9px 8px;
-        }
-        .search-input{
-            outline: none;
-            padding-left: 40px;
-            height: 30px;
-            width: 300px;
-            border-radius: 25px;
-            border: none;
-        }
-        .cont-main{
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            padding: 30px;
-            justify-content: center;
-        }
-        .slot{
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            width: 300px;
-            margin: 5px;
-            padding: 10px;
-            border-radius: 15px;
-            cursor: pointer;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-        }
-        .slot:hover{
-            animation: bounce 0.5s linear;
-        }
-        .info{
-            display: flex;
-            flex-direction: column;
-            margin: 5px;
-            text-transform: capitalize;
-        }
-        .info div{
-            padding-left: 15px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-            color: white;
-            border-radius: 5px;
-            width: 160px;
-            font-size: 16px;
-        }
-        .slot img{
-            width: 120px;
-        }
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+body{
+    background-color: #e2e1e0;
+}
+header{
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 130px;
+    padding-bottom: 10px;
+}
+.title{
+    font-size: 30px;
+    font-weight: bold;
+}
+.generation{
+    padding: 5px;
+    border-radius: 15px;
+    outline: none;
+    background-color: white;
+    border: none;
+    width: 100px;
+}
+.container-search {
+    position: relative;
+    width: 300px;
+}
+.container-search i {
+    position: absolute;
+    top: -2px; left: 3px;
+    padding: 9px 8px;
+}
+.search-input{
+    outline: none;
+    padding-left: 40px;
+    height: 30px;
+    width: 300px;
+    border-radius: 25px;
+    border: none;
+}
+.cont-main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 30px;
+    justify-content: center;
+}
+.loading{
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.slot{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 300px;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.slot:hover{
+    animation: bounce 0.5s linear;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    text-transform: capitalize;
+}
+.info div{
+    padding-left: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    color: white;
+    border-radius: 5px;
+    width: 160px;
+    font-size: 16px;
+}
+.slot img{
+    width: 120px;
+}
 
-        .normal {background-color: #A8A77A}
-        .fire {background-color: #EE8130}
-        .water {background-color: #6390F0}
-        .electric {background-color: #F7D02C}
-        .grass {background-color: #7AC74C}
-        .ice {background-color: #96D9D6}
-        .fighting {background-color: #C22E28}
-        .poison {background-color: #A33EA1}
-        .ground {background-color: #E2BF65}
-        .flying {background-color: #A98FF3}
-        .psychic {background-color: #F95587}
-        .bug {background-color: #A6B91A}
-        .rock {background-color: #B6A136}
-        .ghost {background-color: #735797}
-        .dragon {background-color: #6F35FC}
-        .dark {background-color: #705746}
-        .steel {background-color: #B7B7CE}
-        .fairy {background-color: #D685AD}
+.normal {background-color: #A8A77A}
+.fire {background-color: #EE8130}
+.water {background-color: #6390F0}
+.electric {background-color: #F7D02C}
+.grass {background-color: #7AC74C}
+.ice {background-color: #96D9D6}
+.fighting {background-color: #C22E28}
+.poison {background-color: #A33EA1}
+.ground {background-color: #E2BF65}
+.flying {background-color: #A98FF3}
+.psychic {background-color: #F95587}
+.bug {background-color: #A6B91A}
+.rock {background-color: #B6A136}
+.ghost {background-color: #735797}
+.dragon {background-color: #6F35FC}
+.dark {background-color: #705746}
+.steel {background-color: #B7B7CE}
+.fairy {background-color: #D685AD}
 
-        @keyframes bounce {
-            20% {
-                transform: translateX(-6px);
-            }
-            40% {
-                transform: translateX(0px);
-            }
+@keyframes bounce {
+    20% {
+        transform: translateX(-6px);
+    }
+    40% {
+        transform: translateX(0px);
+    }
 
-            80% {
-                transform: translateX(-2px);
-            }
-            100% {
-                transform: translateX(0);
-            }
-        }
+    80% {
+        transform: translateX(-2px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
-        /* modal */	
-        .modal {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            visibility: hidden;
-            transform: scale(1.1);
-            transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
-            z-index: 9999;
-        }
-        .show-modal {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1.0);
-            transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
-        }
-        .modal-content {
-            position: absolute;
-            top: 50%; left: 50%; width: 300px; height: 500px;
-            transform: translate(-50%, -50%);
-            border-radius: 30px;
-        }
-        .name{
-            position: relative;
-            top: 20px; left: 20px;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            text-transform: capitalize;
-        }
-        .number{
-            position: relative;
-            top: 30px; left: 20px;
-            color: white;
-        }
-        .center{
-            position: absolute;
-            bottom: 0; width: 100%; height: 330px;
-            background-color: #e2e1e0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-radius: 25px;
-            color: black;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        .m-avatar{
-            position: absolute;
-            left: 50%; top: -120px;
-            transform: translateX(-50%);
-        }
-        .m-avatar img{
-            height: 150px;
-        }
-        .types{
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-            width: 300px;
-            margin-top: 30px;
-        }
-        .type1{
-            padding: 5px;
-            border-radius: 30px;
-            width: 100px;
-            text-align: center;
-            color: white;
-            font-weight: normal;
-            text-transform: capitalize;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(3, auto);
-            width: 300px;
-            margin-top: 20px;
-        }
-        .grid-container > div {
-            text-align: center;
-            border-right: 1px solid #232b2b;
-            padding-bottom: 10px;
-            width: 100px;
-        }
-        .grid-6{
-            text-transform: capitalize;
-        }
+/* modal */	
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+    z-index: 9999;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+.modal-content {
+    position: absolute;
+    top: 50%; left: 50%; width: 300px; height: 530px;
+    transform: translate(-50%, -50%);
+    border-radius: 30px;
+}
+.name{
+    position: relative;
+    top: 20px; left: 20px;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.number{
+    position: relative;
+    top: 30px; left: 20px;
+    color: white;
+}
+.center{
+    position: absolute;
+    bottom: 0; width: 100%; height: 350px;
+    background-color: #e2e1e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 25px;
+    color: black;
+    font-weight: bold;
+    font-size: 12px;
+}
+.m-avatar{
+    position: absolute;
+    left: 50%; top: -120px;
+    transform: translateX(-50%);
+}
+.m-avatar img{
+    height: 150px;
+}
+.types{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 300px;
+    margin-top: 50px;
+}
+.type1{
+    padding: 5px;
+    border-radius: 30px;
+    width: 100px;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+    text-transform: capitalize;
+}
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    width: 300px;
+    margin-top: 20px;
+}
+.grid-container > div {
+    text-align: center;
+    padding-bottom: 10px;
+    width: 100px;
+}
+.grid-1, .grid-2, .grid-4, .grid-5 {
+    border-right: 1px solid #232b2b;
+}        
+.grid-6{
+    text-transform: capitalize;
+}
+.grid-container2 {
+    display: grid;
+    grid-template-columns: 50px 30px 1fr;
+    width: 260px;
+}
+.status-title{
+    grid-column: 1 / 4;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    font-size: 14px;
+}
+.status-name{
+    text-align: right;
+    border-right: 1px solid black;
+    padding: 5px;
+}
+.status-num{
+    text-align: left;
+    padding: 5px 10px;
+}
+.bar{
+    position: relative;
+    width: 170px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+    margin: 5px;
+}
+.bar span{
+    position: absolute;
+    width: 45%; height: 15px;
+    border-radius: 30px;
+}
 
-        .grid-container2 {
-            display: grid;
-            grid-template-columns: 50px 30px 1fr;
-            width: 260px;
-        }
-        .status-title{
-            grid-column: 1 / 4;
-            margin-top: 10px;
-            margin-bottom: 5px;
-            margin-left: 5px;
-            font-size: 14px;
-        }
-        .status-name{
-            text-align: right;
-            border-right: 1px solid black;
-            padding: 5px;
-        }
-        .status-num{
-            text-align: left;
-            padding: 5px 10px;
-        }
-        .bar{
-            position: relative;
-            width: 170px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border-radius: 30px;
-            margin: 5px;
-        }
-        .bar span{
-            position: absolute;
-            width: 45%; height: 15px;
-            border-radius: 30px;
-        }
-
-        @media (max-width: 800px) {
-            header{
-                padding: 0;
-                flex-direction: column;
-            }
-            .title{
-                margin: 30px;
-            }
-            .generation{
-                margin-bottom: 30px;
-            }
-            .cont-main{
-                padding: 0;
-            }
-            .slot{
-                margin: 10px;
-                margin-bottom: 0;
-            }
-            .container-search{
-                padding-bottom: 30px;
-            }
-            .slot{
-                padding: 2px;
-            }
-            .info div{
-                width: 150px;
-            }
-        }
+@media (max-width: 800px) {
+    header{
+        padding: 0;
+        flex-direction: column;
+    }
+    .title{
+        margin: 30px;
+    }
+    .generation{
+        margin-bottom: 30px;
+    }
+    .cont-main{
+        padding: 0;
+    }
+    .slot{
+        margin: 10px;
+        margin-bottom: 0;
+    }
+    .container-search{
+        padding-bottom: 30px;
+    }
+    .slot{
+        padding: 2px;
+    }
+    .info div{
+        width: 150px;
+    }
+}
+  /* PokÃ© Styles */
+  .pokeball {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: #fff;
+    border: 5px solid #000;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: inset -10px 10px 0 10px #ccc;
+    animation: shake 1.25s cubic-bezier(.36,.07,.19,.97) infinite;
+  }
+  .pokeball::before,
+  .pokeball::after {
+    content:"";
+    position: absolute;
+  }
+  .pokeball::before {
+    background: red;
+    width: 100%;
+    height: 50%;
+  }
+  .pokeball::after {
+    top: calc(50% - 2px);
+    width: 100%;
+    height: 5px;
+    background: #000;
+  }
+  .pokeball__button {
+    position: absolute;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    width: 20px;
+    height: 20px;
+    background: #7f8c8d;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    z-index: 10;
+    box-shadow: 0 0 0 5px black;
+    animation: blink .5s alternate infinite;
+  }
+  /* Animation */
+  @keyframes blink {
+    from { background: #eee;}
+    to { background: #e74c3c; }
+  }
+  @keyframes shake {
+    0% { transform: translate(0, 0) rotate(0); }
+    20% { transform: translate(-10px, 0) rotate(-20deg); }
+    30% { transform: translate(10px, 0) rotate(20deg); }
+    50% { transform: translate(-10px, 0) rotate(-10deg); }
+    60% { transform: translate(10px, 0) rotate(10deg); }
+    100% { transform: translate(0, 0) rotate(0); }
+  }
