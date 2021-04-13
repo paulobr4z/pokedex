@@ -20,7 +20,7 @@ Ao clicar em um pokemon, a aplicação mostra um modal com mais informações so
 
 ![Mais detalhes](https://github.com/paulobr4z/pokedex/blob/master/img/ps003.png)
 
-O resultado final pode ser visualizado aqui. [Live preview](https://paulobraz.com/exemplos/pokedex/index.html)
+O resultado final pode ser visualizado aqui. [Live preview](https://paulobr4z.github.io/pokedex/)
 
 
 
