@@ -27,11 +27,13 @@ header{
     font-size: 30px;
     font-weight: bold;
 }
-.generation{
-    padding: 5px;
-    border-radius: 15px;
-    outline: none;
+.generation-container {
     background-color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+.generation{
+    outline: none;
     border: none;
     width: 100px;
 }
@@ -272,7 +274,7 @@ header{
     .title{
         margin: 30px;
     }
-    .generation{
+    .generation-container{
         margin-bottom: 30px;
     }
     .cont-main{

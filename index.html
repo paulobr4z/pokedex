@@ -16,18 +16,21 @@
         
         <a href="https://paulobraz.com/exemplos/pokedex/index.html">
             <div class="title" >Pokedéx</div>
-        </a>        
+        </a>
         
-        <select class="generation" name="" id="" onchange="selectGeneration(this.value)">
-            <option value="1,152">GEN 1</option>
-            <option value="152,252">GEN 2</option>
-            <option value="252,387">GEN 3</option>
-            <option value="387,494">GEN 4</option>
-            <option value="494,650">GEN 5</option>
-            <option value="650,722">GEN 6</option>
-            <option value="722,808">GEN 7</option>
-            <option value="1,808">ALL GEN</option>
-        </select>
+        <div class="generation-container">
+            <select class="generation" name="" id="" onchange="selectGeneration(this.value)">
+                <option value="1,152">GEN 1</option>
+                <option value="152,252">GEN 2</option>
+                <option value="252,387">GEN 3</option>
+                <option value="387,494">GEN 4</option>
+                <option value="494,650">GEN 5</option>
+                <option value="650,722">GEN 6</option>
+                <option value="722,808">GEN 7</option>
+                <option value="1,808">ALL GEN</option>
+            </select>
+        </div>
+        
         
         <div class="container-search">
             <input class="search-input" type="text" placeholder="Search" autofocus >
