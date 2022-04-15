@@ -50,7 +50,7 @@
 
             const pokemonsCont = pokemons.map((allPoke) =>
                 `<div class="slot ${allPoke.type1}" id="${allPoke.id}" onclick="createModal(this.id)">
-                        <img src="https://pokeres.bastionbot.org/images/pokemon/${allPoke.id}.png" alt="">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${allPoke.id}.png" alt="">
                     <div class="info">
                         <div># ${allPoke.id}</div>
                         <div>${allPoke.name}</div>
