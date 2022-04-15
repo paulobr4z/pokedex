@@ -33,7 +33,7 @@
             Promise.all(promises).then((results) => {
                 const pokemon = results.map((result) => ({
                     name: result.name,
-                    image: `https://pokeres.bastionbot.org/images/pokemon/${result.id}.png`,
+                    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${result.id}.png`,
                     type: result.types.map((type) => type.type.name).join(' / '),
                     id: result.id,
                     type1: result.types.map((type) => type.type.name)[0],
